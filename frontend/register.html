@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - U And I</title>
+    <link rel="stylesheet" href="register.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="register-page-wrapper">
+        <div class="register-container">
+
+            <div class="register-form-container">
+                <div class="register-header">
+                    <h1>Create an Account</h1>
+                    <p>Register to start your journey with U And I</p>
+                </div>
+
+                <form class="register-form" action="/api/register" method="POST" enctype="multipart/form-data"
+                    id="registerForm">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input id="fullname" name="fullname" type="text" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input id="email" name="email" type="email" required />
+                        <small id="emailError" class="error-text"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" name="phone" type="tel" required />
+                        <small id="phoneError" class="error-text"></small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" name="confirm-password" type="password" required />
+                        <small id="passwordError" class="error-text"></small>
+                    </div>
+
+                    <!-- Camera Section -->
+                    <div class="id-verification-section">
+                        <h2>Verify Your Identity</h2>
+                        <p>Please take a live photo of your government ID and a selfie holding the same ID.</p>
+
+                        <video id="camera" autoplay playsinline></video>
+                        <canvas id="snapshot" style="display: none;"></canvas>
+
+                        <div class="button-group">
+                            <button type="button" id="captureIDBtn">📸 Capture ID Photo</button>
+                            <button type="button" id="captureSelfieBtn">🤳 Capture Selfie</button>
+                        </div>
+
+                        <div class="preview-section">
+                            <div>
+                                <p>ID Photo:</p>
+                                <img id="idPreview" src="" alt="ID Photo" />
+                            </div>
+                            <div>
+                                <p>Selfie:</p>
+                                <img id="selfiePreview" src="" alt="Selfie Photo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="file" id="idFileInput" name="id_photo" style="display: none;" />
+                    <input type="file" id="selfieFileInput" name="selfie_photo" style="display: none;" />
+
+                    <div class="form-group">
+                        <button type="submit" class="register-button" id="submitButton" disabled>
+                            Register
+                        </button>
+                    </div>
+                </form>
+
+                <p class="login-link">
+                    Already have an account?
+                    <a href="login.html">Log in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+
+</html>
