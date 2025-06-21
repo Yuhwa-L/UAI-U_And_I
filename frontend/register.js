@@ -64,18 +64,6 @@ window.addEventListener("DOMContentLoaded", () => {
     function validateForm() {
         let valid = true;
 
-        // U.S. phone number validation: exactly 10 digits, no symbols
-        const rawPhone = phone.value.replace(/\D/g, ''); // remove non-digits
-
-        if (rawPhone.length !== 10) {
-            phoneError.textContent = "Please enter a valid 10-digit U.S. phone number.";
-            valid = false;
-        } else {
-            phoneError.textContent = "";
-        }
-
-
-
         // Email validation
         if (!isValidEmail(email.value)) {
             emailError.textContent = "Please enter a valid email address.";
@@ -104,36 +92,88 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("captureIDBtn").addEventListener("click", () => capturePhoto("id"));
     document.getElementById("captureSelfieBtn").addEventListener("click", () => capturePhoto("selfie"));
 
-    /*
-    res.redirect('/register-success.html');
 
-    This should be here if I use interaction with back end 
-    backend should send a redirect*/
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Final check in case JS changes
-        if (submitButton.disabled) return;
-
-        submitButton.disabled = true;
-        submitButton.innerText = "Submitting...";
-
-        // Simulate delay then redirect
-        setTimeout(() => {
-            window.location.href = "register-success.html";
-        }, 1500);
-    });
 
     startCamera();
 });
 
-phone.addEventListener("input", () => {
-    // Keep only digits and limit to 10
-    const digitsOnly = phone.value.replace(/\D/g, "").slice(0, 10);
-    phone.value = digitsOnly;
-    validateForm();
+
+const emergencyInput = document.getElementById("emergency");
+const emergencyError = document.getElementById("emergencyError");
+
+emergencyInput.addEventListener("input", () => {
+    const emergencyValue = emergencyInput.value;
+    const isValid = /^\d{0,10}$/.test(emergencyValue);
+    emergencyInput.value = emergencyValue.replace(/\D/g, "").slice(0, 10);
+
+    if (!isValid || emergencyValue.length !== 10) {
+        emergencyError.textContent = "Emergency contact must be a 10-digit US number.";
+    } else {
+        emergencyError.textContent = "";
+    }
+});
+
+const phoneInput = document.getElementById("phone");
+const phoneError = document.getElementById("phoneError");
+
+
+phoneInput.addEventListener("input", () => {
+    const phoneValue = phoneInput.value;
+    const isValid = /^\d{0,10}$/.test(phoneValue);
+    phoneInput.value = phoneValue.replace(/\D/g, "").slice(0, 10);
+
+    if (!isValid || phoneValue.length !== 10) {
+        phoneError.textContent = "Phone number must be a 10-digit US number.";
+    } else {
+        phoneError.textContent = "";
+    }
 });
 
 
 
+document.getElementById('registerForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const submitBtn = document.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+
+  // Collect values from input fields
+  const fullName = document.getElementById('fullname').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const contactNumber = document.getElementById('phone').value;
+  const emergencyContactNumber = document.getElementById('emergency').value;
+  const idImageBase64 = document.getElementById('idPreview').src;
+  const selfieImageBase64 = document.getElementById('selfiePreview').src;
+
+  const person = {
+    fullName,
+    email,
+    password,
+    contactNumber,
+    emergencyContactNumber,
+    idImageBase64,
+    selfieImageBase64
+  };
+
+
+  try {
+    const response = await fetch('http://localhost:8080/api/sign-up', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(person)
+    });
+
+    if (response.ok) {
+      window.location.href = 'register-success.html';
+    } else {
+      const errorText = await response.text();
+      alert(`Registration failed: ${errorText}`);
+    }
+  } catch (err) {
+    alert('Could not connect to the server. Please try again later.');
+    console.error('Network error:', err);
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
