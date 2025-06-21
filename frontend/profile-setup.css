@@ -1,0 +1,50 @@
+.profile-setup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #ffe4ec, #ffe8f0);
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-setup-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+input[type="file"],
+textarea {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.submit-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #ff7096;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.submit-btn.enabled {
+  opacity: 1;
+  cursor: pointer;
+}

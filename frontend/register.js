@@ -165,7 +165,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     });
 
     if (response.ok) {
-      window.location.href = 'register-success.html';
+      window.location.href = 'profile-setup.html';
     } else {
       const errorText = await response.text();
       alert(`Registration failed: ${errorText}`);
