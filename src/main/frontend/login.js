@@ -1,34 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".login-form");
-  const loginButton = document.querySelector(".login-button");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.login-form');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-    const email = form.email.value.trim();
-    const password = form.password.value;
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    const loginData = { email, password };
+    if (!email || !password) {
+      return; // Do nothing if fields are empty
+    }
+
+    const loginData = {
+      email: email,
+      password: password
+    };
 
     try {
-      const response = await fetch("http://<your-backend-domain>/login", {
-        method: "POST",
+      const response = await fetch('http://localhost:8080/api/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(loginData)
       });
 
       if (response.ok) {
-        // Login success — redirect to home or dashboard
-        window.location.href = "home.html";
-      } else {
-        const errorText = await response.text();
-        alert("Login failed: " + errorText);
+        window.location.href = 'home.html';
       }
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Unable to connect to server. Try again later.");
+      console.error('Login error:', error);
+      // Still no alert — just log if needed
     }
   });
 });
