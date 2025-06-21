@@ -139,6 +139,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
   // Collect values from input fields
   const fullName = document.getElementById('fullname').value;
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const contactNumber = document.getElementById('phone').value;
@@ -148,6 +149,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
   const person = {
     fullName,
+    gender,
     email,
     password,
     contactNumber,

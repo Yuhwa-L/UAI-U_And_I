@@ -36,6 +36,36 @@ body {
     padding: 3rem;
 }
 
+.gender-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.gender-option {
+    flex: 1;
+    padding: 0.8rem 0;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 500;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gender-option:hover {
+    background-color: #e0938c;
+}
+
+input[type="radio"]:checked+.gender-option {
+    background-color: #e0938c;
+    color: white;
+    border-color: #e0938c;
+}
+
 .register-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -114,10 +144,10 @@ body {
 }
 
 .error-text {
-  color: #dc2626;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
-  display: block;
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
 }
 
 /* ID Verification Section */
