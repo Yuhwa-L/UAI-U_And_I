@@ -132,50 +132,52 @@ phoneInput.addEventListener("input", () => {
 
 
 document.getElementById('registerForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const submitBtn = document.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
 
-  // Collect values from input fields
-  const fullName = document.getElementById('fullname').value;
-  const gender = document.querySelector('input[name="gender"]:checked')?.value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const contactNumber = document.getElementById('phone').value;
-  const emergencyContactNumber = document.getElementById('emergency').value;
-  const idImageBase64 = document.getElementById('idPreview').src;
-  const selfieImageBase64 = document.getElementById('selfiePreview').src;
+    // Collect values from input fields
+    const fullName = document.getElementById('fullname').value;
+    const gender = document.querySelector('input[name="gender"]:checked')?.value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const contactNumber = document.getElementById('phone').value;
+    const emergencyContactNumber = document.getElementById('emergency').value;
+    const idImageBase64 = document.getElementById('idPreview').src;
+    const selfieImageBase64 = document.getElementById('selfiePreview').src;
 
-  const person = {
-    fullName,
-    gender,
-    email,
-    password,
-    contactNumber,
-    emergencyContactNumber,
-    idImageBase64,
-    selfieImageBase64
-  };
+    const person = {
+        fullName,
+        gender,
+        email,
+        password,
+        contactNumber,
+        emergencyContactNumber,
+        idImageBase64,
+        selfieImageBase64
+    };
 
 
-  try {
-    const response = await fetch('http://localhost:8080/api/sign-up', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(person)
-    });
+    try {
+        const response = await fetch('http://localhost:8080/api/sign-up', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(person)
+        });
 
-    if (response.ok) {
-      window.location.href = 'profile-setup.html';
-    } else {
-      const errorText = await response.text();
-      alert(`Registration failed: ${errorText}`);
+        if (response.ok) {
+            const email = document.getElementById('email').value;
+            localStorage.setItem('registeredEmail', email);  // save to localStorage
+            window.location.href = 'profile-setup.html';
+        } else {
+            const errorText = await response.text();
+            alert(`Registration failed: ${errorText}`);
+        }
+    } catch (err) {
+        alert('Could not connect to the server. Please try again later.');
+        console.error('Network error:', err);
+    } finally {
+        submitBtn.disabled = false;
     }
-  } catch (err) {
-    alert('Could not connect to the server. Please try again later.');
-    console.error('Network error:', err);
-  } finally {
-    submitBtn.disabled = false;
-  }
 });

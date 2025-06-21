@@ -3,6 +3,8 @@ const photoPreview = document.getElementById("photoPreview");
 const bioInput = document.getElementById("bioInput");
 const submitBtn = document.getElementById("submitBtn");
 
+const email = localStorage.getItem('registeredEmail');
+
 let base64Photo = "";
 
 function checkValidity() {
@@ -39,6 +41,7 @@ submitBtn.addEventListener("click", async () => {
   const bio = bioInput.value.trim();
 
   const profileData = {
+    email: email,
     photoBase64: base64Photo,
     bio: bio
   };
