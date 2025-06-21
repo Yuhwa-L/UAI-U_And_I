@@ -1,6 +1,8 @@
 package com.uai.uai_backend.controller;
 
+import com.uai.uai_backend.dto.BioRequest;
 import com.uai.uai_backend.dto.LoginRequest;
+import com.uai.uai_backend.dto.MultipleChoiceAnswersRequest;
 import com.uai.uai_backend.model.User;
 import com.uai.uai_backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,33 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
             return userService.loginUser(loginRequest);
     }
+
+    @PostMapping("/submit-bio")
+    public ResponseEntity<?> submitBio(@RequestBody BioRequest bioRequest) {
+        return userService.saveBioForUser(bioRequest);
+    }
+
+    @PostMapping("/submit-answers-mcq")
+    public ResponseEntity<?> submitBio(@RequestBody MultipleChoiceAnswersRequest multipleChoiceAnswersRequest) {
+        return userService.saveMultipleChoiceAnswers(multipleChoiceAnswersRequest);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<?> getUserByEmail(@RequestParam String email) {
+        return userService.getUserDetailsByEmail(email);
+    }
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers() {
+        return userService.getAllUsers();
+    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
+//        return userService.loginUser(loginRequest);
+//    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> loginUser(@PathVariable Long id){
+//        return userService.getUserDetails(id);
+//    }
 
 //    @PatchMapping("/verify-user/{id}")
 //    public ResponseEntity<?> verifyIdentity(@PathVariable Long id) {

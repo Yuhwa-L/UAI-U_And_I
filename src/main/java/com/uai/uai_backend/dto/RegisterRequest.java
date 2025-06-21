@@ -12,6 +12,7 @@ public class RegisterRequest {
     private String idImageBase64;
     private String selfieImageBase64;
     private String password;
+    private String gender;
 
     public String getEmail(){
         return email;
@@ -32,4 +33,5 @@ public class RegisterRequest {
         return selfieImageBase64;
     }
     public String getPassword(){ return password; }
+    public String getGender(){return gender;}
 }

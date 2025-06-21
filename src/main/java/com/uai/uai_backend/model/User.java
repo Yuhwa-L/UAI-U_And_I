@@ -1,12 +1,15 @@
 package com.uai.uai_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.uai.uai_backend.config.QuestionAnswersConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "users")
@@ -32,9 +35,17 @@ public class User {
     private String contactNumber;
     private String emergencyContactNumber;
     private String password;
+    private String gender;
 
     private String idImageBase64;
     private String selfieImageBase64;
+
+    private String Bio;
+    private String photoBase64;
+
+    @Convert(converter = QuestionAnswersConverter.class)
+    @Column(columnDefinition = "TEXT") // allows large JSON content
+    private Map<String, String> questionAnswers = new HashMap<>();
 
     public void setEmail(String mail){
         email = mail;
@@ -66,6 +77,38 @@ public class User {
     public void setVerificationMethod(String value){
         verificationMethod = value;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setQuestionAnswers(Map<String, String> questionAnswers) {
+        this.questionAnswers = questionAnswers;
+    }
+
+    public Map<String, String> getQuestionAnswers(){
+        return questionAnswers;
+    }
+
+    public String getBio() {
+        return Bio;
+    }
+
+    public String getProfilePhoto() {
+        return photoBase64;
+    }
+
+    public void setBio(String bio) {
+        Bio = bio;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.photoBase64 = profilePhoto;
+    }
+
+    public void setGender(String value){
+        gender = value;
+    }
     public String getPassword() {
         return password;
     }
@@ -78,7 +121,39 @@ public class User {
         return selfieImageBase64;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public String getVerificationMethod() {
+        return verificationMethod;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public String getEmergencyContactNumber() {
+        return emergencyContactNumber;
+    }
+
     public String getEmail(){
         return email;
+    }
+
+    public String getGender(){
+        return gender;
     }
 }
