@@ -1,50 +1,72 @@
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+    /* gray-50 */
+    margin: 0;
+    color: #1f2937;
+    /* gray-800 */
+}
+
 .profile-setup-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(to right, #ffe4ec, #ffe8f0);
-  font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #ebcfcf, #e8d9d8, #d3b5b3);
+    font-family: 'Inter', sans-serif;
 }
 
 .profile-setup-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
+.preview-img {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    border: 3px solid #e58d85;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 
 input[type="file"],
 textarea {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
 }
 
 textarea {
-  resize: none;
+    resize: none;
 }
 
 .submit-btn {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  background-color: #ff7096;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  opacity: 0.6;
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #e58d85;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .submit-btn.enabled {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 }

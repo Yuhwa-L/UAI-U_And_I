@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set Up Your Profile - U And I</title>
   <link rel="stylesheet" href="profile-setup.css" />
 </head>
+
 <body>
 
-<div class="profile-setup-wrapper">
-  <div class="profile-setup-box">
-    <h2>Upload Your Profile Photo</h2>
-    <input type="file" id="photoInput" accept="image/*" />
-    <img id="photoPreview" src="" alt="Preview" class="preview-img" style="display:none; margin-top:1rem; width:100px; height:100px; object-fit:cover; border-radius: 0.5rem;" />
-    
-    <h2 style="margin-top: 1.5rem;">Write Your Bio</h2>
-    <textarea id="bioInput" rows="4" maxlength="200" placeholder="Tell us about your job, hobbies, or personality... (max 200 characters)"></textarea>
+  <div class="profile-setup-wrapper">
+    <div class="profile-setup-box">
+      <h2>Upload Your Profile Photo</h2>
+      <input type="file" id="photoInput" accept="image/*" />
+      <img id="photoPreview" src="" alt="Preview" class="preview-img" />
 
-    <button class="submit-btn" id="submitBtn" disabled>Submit</button>
+      <h2 style="margin-top: 1.5rem;">Write Your Bio</h2>
+      <textarea id="bioInput" rows="4" maxlength="200"
+        placeholder="Tell us about your job, hobbies, or personality... (max 200 characters)"></textarea>
+
+      <button class="submit-btn" id="submitBtn" disabled>Submit</button>
+    </div>
   </div>
-</div>
 
-<script src="profile-setup.js"></script>
+  <script src="profile-setup.js"></script>
 </body>
+
 </html>

@@ -22,7 +22,7 @@ body {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(120deg, #ffc6d9, #f8bbd0, #ffa2c1);
+  background: linear-gradient(120deg, #ebcfcf, #e8d9d8, #d3b5b3);
   padding: 1.5rem;
   font-family: 'Inter', sans-serif;
   animation: gradientMove 8s ease infinite;
@@ -99,7 +99,7 @@ body {
 .login-form input[type="password"]:focus {
   outline: none;
   border-color: transparent;
-  box-shadow: 0 0 0 2px #fc4e8b;
+  box-shadow: 0 0 0 2px #e0938c;
 }
 
 .login-options {
@@ -119,7 +119,7 @@ body {
   width: 1rem;
   border-radius: 0.25rem;
   border-color: #d1d5db;
-  color: #fc4e8b;
+  color: #ecaaa4;
 }
 
 .remember-me label {
@@ -132,12 +132,12 @@ body {
 .forgot-password a {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #ff72a4;
+  color: #ecaaa4;
   text-decoration: none;
 }
 
 .forgot-password a:hover {
-  color: #fc4e8b;
+  color: #e58d85;
 }
 
 .login-button {
@@ -151,7 +151,7 @@ body {
   font-size: 1.125rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(120deg, #ff8fb4, #ff72a4, #ff8fb4);
+  background: linear-gradient(120deg, #ddacac, #e0b5b2, #d0938e);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -170,12 +170,12 @@ body {
 
 .signup-link a {
   font-weight: 500;
-  color: #ff72a4;
+  color: #ecaaa4;
   text-decoration: none;
 }
 
 .signup-link a:hover {
-  color: #fc4e8b;
+  color: #e58d85;
 }
 
 /* Responsive Styles */
