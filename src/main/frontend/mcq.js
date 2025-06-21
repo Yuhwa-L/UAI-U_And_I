@@ -165,7 +165,6 @@ const sendToBackend = async () => {
   };
 
   try {
-
     const response = await fetch('http://localhost:8080/api/submit-answers-mcq', {
       method: 'POST',
       headers: {
