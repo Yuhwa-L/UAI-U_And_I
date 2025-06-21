@@ -54,7 +54,7 @@ submitBtn.addEventListener("click", async () => {
 
     if (response.ok) {
       alert("Profile setup completed!");
-      //window.location.href = "next-page.html";
+      window.location.href = "ai-chat.html";
     } else {
       alert("Something went wrong. Try again.");
     }

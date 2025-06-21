@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat - Match</title>
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <aside class="sidebar">
+      <h2>Chats</h2>
+      <ul id="chat-list">
+        <!-- populated by JS -->
+      </ul>
+    </aside>
+    
+    <main class="chat-window">
+      <div class="chat-header">
+        <span id="chat-partner-name">Emma</span>
+        <a href="home.html" class="home-btn">🏠 Home</a>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- messages inserted by JS -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="chat.js"></script>
+</body>
+</html>
