@@ -57,7 +57,9 @@ submitBtn.addEventListener("click", async () => {
 
     if (response.ok) {
       alert("Profile setup completed!");
-      window.location.href = "ai-chat.html";
+      const email = document.getElementById('email').value;
+      localStorage.setItem('registeredEmail', email);  // save to localStorage
+      window.location.href = "mcq-question.html";
     } else {
       alert("Something went wrong. Try again.");
     }
