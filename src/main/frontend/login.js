@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (response.ok) {
-        window.location.href = 'home.html';
+        window.location.href = 'home-loggedIn.html';
       }
     } catch (error) {
       console.error('Login error:', error);
