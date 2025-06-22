@@ -6,19 +6,46 @@ let questions = [];
 let answers = [];
 let currentIndex = 0;
 
-// 1. Get email from localStorage
+const API_BASE = 'http://localhost:8080'; // Change this to your actual backend base URL
+
+// 1. Get email from localStorage and check it
 const email = localStorage.getItem('registeredEmail');
+if (!email) {
+  alert("Email not found. Please register first.");
+}
 
 // 2. Load questions from backend
 async function loadQuestions() {
+  const payload = {
+    email: email
+  };
+
   try {
-    const res = await fetch('https://your-backend.com/api/get-questions'); // Change to your real backend URL
-    const data = await res.json();
-    questions = data.questions; // Expecting { questions: [q1, q2, q3, q4, q5] }
-    showNextQuestion();
+    const response = await fetch(`${API_BASE}/api/generate-questions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      // Flatten and extract only the "text" field from every question
+      questions = data.flatMap(item => 
+        (item.questions || []).map(q => q.text)
+      );
+
+      console.log("Loaded questions:", questions); // Debug output
+      showNextQuestion(); // Start the conversation
+    } else {
+      appendMessage('ai', 'Failed to fetch questions from the server.');
+    }
+
   } catch (err) {
     console.error('Error loading questions:', err);
-    appendMessage('AI', 'Sorry, failed to load questions.');
+    appendMessage('ai', 'Sorry, failed to load questions.');
   }
 }
 
@@ -34,7 +61,7 @@ function showNextQuestion() {
 // 4. Append message to UI
 function appendMessage(sender, text) {
   const msg = document.createElement('div');
-  msg.classList.add('message', sender);
+  msg.classList.add('message', sender.toLowerCase());
   msg.innerText = text;
   messagesContainer.appendChild(msg);
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -49,10 +76,17 @@ sendBtn.addEventListener('click', () => {
   answers.push(input);
   userInput.value = '';
   currentIndex++;
-  setTimeout(showNextQuestion, 300); // Delay to simulate thinking
+  setTimeout(showNextQuestion, 300); // Delay to simulate AI "thinking"
 });
 
-// 6. Final step: send answers to backend
+// 6. Optional: Handle Enter key for user input
+userInput.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    sendBtn.click();
+  }
+});
+
+// 7. Final step: send answers to backend
 async function finishAndSend() {
   try {
     const payload = {
@@ -60,7 +94,7 @@ async function finishAndSend() {
       answers
     };
 
-    const res = await fetch('https://your-backend.com/api/save-answers', {
+    const res = await fetch(`${API_BASE}/api/save-answers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -80,5 +114,5 @@ async function finishAndSend() {
   }
 }
 
-// 7. Start everything
+// 8. Start everything
 loadQuestions();

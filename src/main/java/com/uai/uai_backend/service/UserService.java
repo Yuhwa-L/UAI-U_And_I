@@ -174,7 +174,18 @@ public class UserService {
                 .map(user -> {
                     // Prepare payload to send to Flask
                     Map<String, Object> aiPayload = new HashMap<>();
-                    aiPayload.put("answers", user.getQuestionAnswers());
+                    aiPayload.put("user_id", email)
+                    Map<String, String> temp = user.getQuestionAnswers();
+                    List<Stirng> questions = new ArrayList<>();
+
+                    for (Map.Entry<String, String> entry : answers.entrySet()) {
+                        String question = entry.getKey();
+                        String answer = entry.getValue();
+                        questions.add(question + answer);
+    
+                    }
+                    //aiPayload.put("answers", user.getQuestionAnswers());
+                    aiPayload.put("opts", questions);
                     aiPayload.put("bio", user.getBio());
 
                     try {
@@ -183,7 +194,7 @@ public class UserService {
                         String requestBody = mapper.writeValueAsString(aiPayload);
 
                         HttpRequest httpRequest = HttpRequest.newBuilder()
-                                .uri(URI.create("http://localhost:5000/generate_questions"))
+                                .uri(URI.create("http://localhost:5001/generate_questions"))
                                 .header("Content-Type", "application/json")
                                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                                 .build();

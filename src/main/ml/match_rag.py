@@ -14,7 +14,7 @@ from flask import Flask, request, jsonify
 # ────────────────────────────────────────────────────────────────────
 load_dotenv()
 if "OPENAI_API_KEY" not in os.environ:
-    os.environ["OPENAI_API_KEY"] = "key"
+    os.environ["OPENAI_API_KEY"] = "OPENAI_API_KEY=[REDACTED]"
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
@@ -267,7 +267,7 @@ def api_generate():
 # ─────────────────────────────
 if __name__ == "__main__":
     # FLASK_RUN_PORT=5000 flask run   ← or just:
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)
 
 # ────────────────────────────────────────────────────────────────────
 # 3.  CLI test

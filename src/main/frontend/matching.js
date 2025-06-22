@@ -1,37 +1,37 @@
 const matches = [
     {
-        name: "Olivia",
+        name: "Aarti",
         age: 24,
-        photo: "photos/woman1.PNG",
-        summary: "Olivia is a thoughtful bookworm who spends weekends hiking and journaling. She's looking for someone who values calm moments and emotional presence.",
+        photo: "photos/woman1.jpeg",
+        summary: "Aarti is a thoughtful bookworm who spends weekends hiking and journaling. She's looking for someone who values calm moments and emotional presence.",
         preferences: "Hiking, tea dates, novels, indie films, journaling"
     },
     {
         name: "Aria",
         age: 27,
-        photo: "photos/woman2.PNG",
+        photo: "photos/woman2.jpeg",
         summary: "Aria is a jazz guitarist and weekend foodie who seeks genuine connection through conversation and shared creativity.",
         preferences: "Jazz, ramen shops, acoustic sets, rooftop talks"
     },
     {
         name: "Zoe",
         age: 22,
-        photo: "photos/woman3.PNG",
+        photo: "photos/woman3.jpeg",
         summary: "Zoe travels with her film camera and finds joy in street art, poetry, and real connection.",
         preferences: "Photography, poetry, hidden cafés, night walks"
     },
     {
-        name: "Sophia",
+        name: "Tania",
         age: 26,
-        photo: "photos/woman4.PNG",
-        summary: "Sophia is a calm, nature-loving software dev who values silence, reflection, and slow mornings.",
+        photo: "photos/woman4.jpeg",
+        summary: "Tania is a calm, nature-loving software dev who values silence, reflection, and slow mornings.",
         preferences: "Biking trails, black coffee, nature talks, deep films"
     },
     {
-        name: "Ava",
+        name: "Nikita",
         age: 25,
-        photo: "photos/woman5.PNG",
-        summary: "Ava is a yoga instructor and visual artist who thrives in nature and finds peace in minimalism and kindness.",
+        photo: "photos/woman5.jpeg",
+        summary: "Nikita is a yoga instructor and visual artist who thrives in nature and finds peace in minimalism and kindness.",
         preferences: "Yoga, film photos, nature journaling, slow living"
     }
 ];

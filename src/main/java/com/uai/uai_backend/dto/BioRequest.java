@@ -7,7 +7,7 @@ import lombok.Data;
 public class BioRequest {
     private String email;
     private String bio;
-    private String profilePhoto;
+    private base64Photo profilePhoto;
 
     public void setEmail(String value){
         this.email = value;
@@ -17,7 +17,7 @@ public class BioRequest {
         this.bio = value;
     }
 
-    public void setProfilePhoto(String value){
+    public void setProfilePhoto(base64Photo value){
         this.profilePhoto = value;
     }
 
@@ -29,7 +29,7 @@ public class BioRequest {
         return bio;
     }
 
-    public String getProfilePhoto(){
+    public base64Photo getProfilePhoto(){
         return profilePhoto;
     }
 }

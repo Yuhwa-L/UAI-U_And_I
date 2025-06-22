@@ -104,9 +104,9 @@ const questions = [
 ];
 
 let currentIndex = 0;
-const responses = {};
+const answers = {};
 const chatBox = document.getElementById('chat-messages');
-const choiceMap = ['A', 'B', 'C', 'D', 'E'];
+const choiceMap = ['a', 'b', 'c', 'd', 'e'];
 
 const email = localStorage.getItem('registeredEmail');
 
@@ -127,7 +127,7 @@ const displayQuestion = (index) => {
     btn.innerText = label;
 
     btn.onclick = () => {
-      responses[q.q_id] = choiceMap[i];
+      answers[q.q_id] = choiceMap[i];
 
       const responseDiv = document.createElement('div');
       responseDiv.className = 'message user';
@@ -161,7 +161,7 @@ const sendToBackend = async () => {
 
   const payload = {
     email: email,
-    responses: responses
+    answers: answers
   };
 
   try {
