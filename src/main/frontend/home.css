@@ -1,5 +1,6 @@
 /* General Body Styles */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
@@ -168,7 +169,7 @@ main {
   margin: 1.5rem auto;
   text-align: center;
   color: #374151;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 1rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
 }
@@ -290,7 +291,15 @@ main {
 
 /* Background animation */
 @keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }

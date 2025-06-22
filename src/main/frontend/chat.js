@@ -14,8 +14,8 @@ const chats = {
     { from: 'you', text: "Japan for sure! Culture + food 😍" }
   ],
   Sophia: [
-    { from: 'them', text: "Yoga + ramen. That’s me in two words lol" },
-    { from: 'you', text: "LOL relatable. Let’s chat more soon!" },
+    { from: 'them', text: "Yoga + ramen. That's me in two words lol" },
+    { from: 'you', text: "LOL relatable. Let's chat more soon!" },
     { from: 'them', text: "Do you hike? I love Runyon Canyon." },
     { from: 'you', text: "Yes! Early morning hikes and smoothies after." }
   ]
