@@ -58,6 +58,10 @@ public class UserController {
     public ResponseEntity<?> getAllUsers() {
         return userService.getAllUsers();
     }
+    @GetMapping("/generate-questions")
+    public ResponseEntity<?> saveMultipleChoiceAnswersForAI(@RequestParam String email) {
+        return userService.saveMultipleChoiceAnswersForAI(email);
+    }
 //    @PostMapping("/login")
 //    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
 //        return userService.loginUser(loginRequest);
