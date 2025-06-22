@@ -69,7 +69,7 @@ async function finishAndSend() {
     if (res.ok) {
       appendMessage('ai', 'All done! Redirecting...');
       setTimeout(() => {
-        window.location.href = 'home.html';
+        window.location.href = 'home-loggedIn.html';
       }, 1500);
     } else {
       appendMessage('ai', 'Oops. Something went wrong saving your answers.');
