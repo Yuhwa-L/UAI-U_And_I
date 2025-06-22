@@ -1,0 +1,314 @@
+[
+  {
+    "q_id": "q1",
+    "text": "My everyday communication style is\u2026",
+    "options": [
+      {
+        "opt_id": "q1a",
+        "label": "Short & direct"
+      },
+      {
+        "opt_id": "q1b",
+        "label": "Warm & expressive"
+      },
+      {
+        "opt_id": "q1c",
+        "label": "Thoughtful & measured"
+      },
+      {
+        "opt_id": "q1d",
+        "label": "Humorous / meme-heavy"
+      },
+      {
+        "opt_id": "q1e",
+        "label": "Depends on the person"
+      }
+    ]
+  },
+  {
+    "q_id": "q2",
+    "text": "How do you recharge your social battery?",
+    "options": [
+      {
+        "opt_id": "q2a",
+        "label": "Big parties give me energy"
+      },
+      {
+        "opt_id": "q2b",
+        "label": "Small hangouts are perfect"
+      },
+      {
+        "opt_id": "q2c",
+        "label": "Solo time is essential"
+      },
+      {
+        "opt_id": "q2d",
+        "label": "Balanced mix of everything"
+      },
+      {
+        "opt_id": "q2e",
+        "label": "It changes week-to-week"
+      }
+    ]
+  },
+  {
+    "q_id": "q3",
+    "text": "Planning style for trips or projects:",
+    "options": [
+      {
+        "opt_id": "q3a",
+        "label": "Detailed checklist & timeline"
+      },
+      {
+        "opt_id": "q3b",
+        "label": "Loose outline, improvise later"
+      },
+      {
+        "opt_id": "q3c",
+        "label": "Spontaneous\u2014decide on the day"
+      },
+      {
+        "opt_id": "q3d",
+        "label": "Last-minute crunch works best"
+      },
+      {
+        "opt_id": "q3e",
+        "label": "Collaborative planning with others"
+      }
+    ]
+  },
+  {
+    "q_id": "q4",
+    "text": "When conflict appears, I usually\u2026",
+    "options": [
+      {
+        "opt_id": "q4a",
+        "label": "Address it calmly right away"
+      },
+      {
+        "opt_id": "q4b",
+        "label": "Take time, then talk it out"
+      },
+      {
+        "opt_id": "q4c",
+        "label": "Find a compromise quickly"
+      },
+      {
+        "opt_id": "q4d",
+        "label": "Prefer to let it blow over"
+      },
+      {
+        "opt_id": "q4e",
+        "label": "Avoid confrontation altogether"
+      }
+    ]
+  },
+  {
+    "q_id": "q5",
+    "text": "Which life priorities resonate most with you?",
+    "options": [
+      {
+        "opt_id": "q5a",
+        "label": "Career growth"
+      },
+      {
+        "opt_id": "q5b",
+        "label": "Creative expression"
+      },
+      {
+        "opt_id": "q5c",
+        "label": "Community & service"
+      },
+      {
+        "opt_id": "q5d",
+        "label": "Travel & new experiences"
+      },
+      {
+        "opt_id": "q5e",
+        "label": "Health & wellbeing"
+      }
+    ]
+  },
+  {
+    "q_id": "q6",
+    "text": "Your ideal weekend looks like\u2026",
+    "options": [
+      {
+        "opt_id": "q6a",
+        "label": "Outdoor adventure"
+      },
+      {
+        "opt_id": "q6b",
+        "label": "Caf\u00e9-hopping & city strolls"
+      },
+      {
+        "opt_id": "q6c",
+        "label": "Game / movie marathon at home"
+      },
+      {
+        "opt_id": "q6d",
+        "label": "Learning a new skill or hobby"
+      },
+      {
+        "opt_id": "q6e",
+        "label": "Volunteering / community event"
+      }
+    ]
+  },
+  {
+    "q_id": "q7",
+    "text": "Fitness routine that actually sticks:",
+    "options": [
+      {
+        "opt_id": "q7a",
+        "label": "Daily gym / running plan"
+      },
+      {
+        "opt_id": "q7b",
+        "label": "Team or club sports"
+      },
+      {
+        "opt_id": "q7c",
+        "label": "Yoga / Pilates / meditation"
+      },
+      {
+        "opt_id": "q7d",
+        "label": "Dance or movement classes"
+      },
+      {
+        "opt_id": "q7e",
+        "label": "Not big on regular workouts"
+      }
+    ]
+  },
+  {
+    "q_id": "q8",
+    "text": "Topics you never tire of discussing:",
+    "options": [
+      {
+        "opt_id": "q8a",
+        "label": "Science & technology"
+      },
+      {
+        "opt_id": "q8b",
+        "label": "Arts & culture"
+      },
+      {
+        "opt_id": "q8c",
+        "label": "Global issues & politics"
+      },
+      {
+        "opt_id": "q8d",
+        "label": "Personal growth & psychology"
+      },
+      {
+        "opt_id": "q8e",
+        "label": "Sports & fitness"
+      }
+    ]
+  },
+  {
+    "q_id": "q9",
+    "text": "Money to me is mainly for\u2026",
+    "options": [
+      {
+        "opt_id": "q9a",
+        "label": "Saving & security"
+      },
+      {
+        "opt_id": "q9b",
+        "label": "Investing & wealth building"
+      },
+      {
+        "opt_id": "q9c",
+        "label": "Experiences & memories"
+      },
+      {
+        "opt_id": "q9d",
+        "label": "Giving back / philanthropy"
+      },
+      {
+        "opt_id": "q9e",
+        "label": "Living comfortably day-to-day"
+      }
+    ]
+  },
+  {
+    "q_id": "q10",
+    "text": "Family life perspective:",
+    "options": [
+      {
+        "opt_id": "q10a",
+        "label": "Want kids in the near future"
+      },
+      {
+        "opt_id": "q10b",
+        "label": "Kids someday, not soon"
+      },
+      {
+        "opt_id": "q10c",
+        "label": "Happier without children"
+      },
+      {
+        "opt_id": "q10d",
+        "label": "Open to whatever unfolds"
+      },
+      {
+        "opt_id": "q10e",
+        "label": "Prefer not to say yet"
+      }
+    ]
+  },
+  {
+    "q_id": "q11",
+    "text": "Choose the values you hold dearest:",
+    "options": [
+      {
+        "opt_id": "q11a",
+        "label": "Honesty & integrity"
+      },
+      {
+        "opt_id": "q11b",
+        "label": "Kindness & empathy"
+      },
+      {
+        "opt_id": "q11c",
+        "label": "Ambition & drive"
+      },
+      {
+        "opt_id": "q11d",
+        "label": "Adventure & spontaneity"
+      },
+      {
+        "opt_id": "q11e",
+        "label": "Stability & reliability"
+      }
+    ]
+  },
+  {
+    "q_id": "q12",
+    "text": "Right now, I\u2019m looking for\u2026",
+    "options": [
+      {
+        "opt_id": "q12a",
+        "label": "Long-term commitment"
+      },
+      {
+        "opt_id": "q12b",
+        "label": "Open to long-term but casual start"
+      },
+      {
+        "opt_id": "q12c",
+        "label": "Short-term fun / dating"
+      },
+      {
+        "opt_id": "q12d",
+        "label": "Friendship that could evolve"
+      },
+      {
+        "opt_id": "q12e",
+        "label": "Not sure yet"
+      }
+    ]
+  }
+]

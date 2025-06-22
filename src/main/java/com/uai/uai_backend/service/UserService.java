@@ -150,22 +150,64 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<?> saveMultipleChoiceAnswersForAI(MultipleChoiceAnswersRequest request) {
-        return userRepository.findByEmail(request.getEmail())
+    // public ResponseEntity<?> saveMultipleChoiceAnswersForAI(MultipleChoiceAnswersRequest request) {
+    //     return userRepository.findByEmail(request.getEmail())
+    //             .map(user -> {
+    //                 user.setQuestionAnswers(request.getAnswers());
+    //                 userRepository.save(user);
+
+    //                 // Construct AI payload
+    //                 Map<String, Object> aiPayload = new HashMap<>();
+    //                 aiPayload.put("email", user.getEmail());
+    //                 aiPayload.put("bio", user.getBio());
+    //                 aiPayload.put("answers", user.getQuestionAnswers());
+
+    //                 // Call AI service (Python)
+    //                 restTemplate.postForObject("http://localhost:5000/generate-questions", aiPayload, String.class);
+
+    //                 return ResponseEntity.ok("Answers saved & sent to AI for question generation");
+    //             })
+    //             .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
+    // }
+    public ResponseEntity<?> saveMultipleChoiceAnswersForAI(String email) {
+        return userRepository.findByEmail(email)
                 .map(user -> {
-                    user.setQuestionAnswers(request.getAnswers());
-                    userRepository.save(user);
-
-                    // Construct AI payload
+                    // Prepare payload to send to Flask
                     Map<String, Object> aiPayload = new HashMap<>();
-                    aiPayload.put("email", user.getEmail());
-                    aiPayload.put("bio", user.getBio());
                     aiPayload.put("answers", user.getQuestionAnswers());
+                    aiPayload.put("bio", user.getBio());
 
-                    // Call AI service (Python)
-                    restTemplate.postForObject("http://localhost:5000/generate-questions", aiPayload, String.class);
+                    try {
+                        // Send HTTP POST to Flask
+                        ObjectMapper mapper = new ObjectMapper();
+                        String requestBody = mapper.writeValueAsString(aiPayload);
 
-                    return ResponseEntity.ok("Answers saved & sent to AI for question generation");
+                        HttpRequest httpRequest = HttpRequest.newBuilder()
+                                .uri(URI.create("http://localhost:5000/generate_questions"))
+                                .header("Content-Type", "application/json")
+                                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                                .build();
+
+                        HttpClient client = HttpClient.newHttpClient();
+                        HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+                        if (response.statusCode() == 200) {
+                            // Parse returned questions
+                            List<Map<String, String>> questionList = mapper.readValue(
+                                    response.body(), new TypeReference<>() {}
+                            );
+
+                            // Optionally: save to DB or attach to user
+
+                            return ResponseEntity.ok(questionList);  // ✅ Send to frontend
+                        } else {
+                            return ResponseEntity.status(502).body("Flask service error: " + response.body());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return ResponseEntity.status(500).body("AI service call failed: " + e.getMessage());
+                    }
+
                 })
                 .orElseGet(() -> ResponseEntity.status(404).body("User not found"));
     }
