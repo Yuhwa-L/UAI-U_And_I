@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fff0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  color: #374151;
+}
+
+.phone-frame {
+  width: 100%;
+  max-width: 320px;
+  border: 1.5px solid #ecaaa4;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  background-color: white;
+  padding: 1rem;
+}
+
+.status {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #b91c1c;
+}
+
+.map {
+  width: 100%;
+  height: 180px;
+  background-image: url("Boston-map.png");
+  background-size: cover;
+  background-position: center center; /* CENTER the photo visually */
+  background-repeat: no-repeat;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+}
+
+
+.message-box {
+  background-color: #fef2f2;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  border-left: 4px solid #dc2626;
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #de1616;
+  font-weight: 500;
+}
