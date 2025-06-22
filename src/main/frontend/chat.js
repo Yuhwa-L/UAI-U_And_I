@@ -1,23 +1,18 @@
 const chats = {
+  Olivia: [], // Simulating empty chat
   Emma: [
-    { from: 'them', text: "Hey! I'm excited we matched 💕" },
-    { from: 'you', text: "Same here! How's your day going?" },
-    { from: 'them', text: "Pretty good. Just got back from the art museum!" },
-    { from: 'you', text: "Ooh I love museums. Which one?" },
-    { from: 'them', text: "The Getty. Stunning view from the garden." },
-    { from: 'you', text: "Let's go together next time 😄" }
-  ],
-  Olivia: [
-    { from: 'them', text: "Hi! You seem fun 😄" },
-    { from: 'you', text: "Haha thank you! I read your bio, super interesting." },
-    { from: 'them', text: "I travel a lot. What's your dream country to visit?" },
-    { from: 'you', text: "Japan for sure! Culture + food 😍" }
+    { from: 'them', text: "Hey! I'm excited we matched 💕", time: "Jun 21, 10:02 PM" },
+    { from: 'you', text: "Same here! How's your day going?", time: "Jun 21, 10:07 PM" },
+    { from: 'them', text: "Pretty good. Just got back from the art museum!", time: "Jun 21, 10:23 PM" },
+    { from: 'you', text: "Ooh I love museums. Which one?", time: "Jun 21, 10:42 PM" },
+    { from: 'them', text: "The Getty. Stunning view from the garden.", time: "Jun 21, 10:59 PM" },
+    { from: 'you', text: "Let's go together next time 😄", time: "Jun 21, 11:10 PM" }
   ],
   Sophia: [
-    { from: 'them', text: "Yoga + ramen. That's me in two words lol" },
-    { from: 'you', text: "LOL relatable. Let's chat more soon!" },
-    { from: 'them', text: "Do you hike? I love Runyon Canyon." },
-    { from: 'you', text: "Yes! Early morning hikes and smoothies after." }
+    { from: 'them', text: "Yoga + ramen. That's me in two words lol", time: "Jun 22, 1:30 AM" },
+    { from: 'you', text: "LOL relatable. Let's chat more soon!", time: "Jun 22, 1:48 AM" },
+    { from: 'them', text: "Do you hike? I love Runyon Canyon.", time: "Jun 22, 2:32 AM" },
+    { from: 'you', text: "Yes! Early morning hikes and smoothies after.", time: "Jun 22, 2:57 AM" }
   ]
 };
 
@@ -27,8 +22,9 @@ const chatPartnerName = document.getElementById('chat-partner-name');
 const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
 
-let currentChat = 'Emma';
+let currentChat = null;
 
+// Render chat list
 function renderChatList() {
   for (let name in chats) {
     const li = document.createElement('li');
@@ -41,24 +37,53 @@ function renderChatList() {
   }
 }
 
+// Format timestamps
+function formatTimestamp(date) {
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+    month: 'short',
+    day: 'numeric'
+  };
+  return date.toLocaleString('en-US', options);
+}
+
+// Load chat content
 function loadChat(name) {
   chatPartnerName.textContent = name;
   chatMessages.innerHTML = '';
+  document.getElementById('initial-placeholder').style.display = 'none';
 
-  chats[name].forEach((msg) => {
-    const div = document.createElement('div');
-    div.className = `message ${msg.from}`;
-    div.textContent = msg.text;
-    chatMessages.appendChild(div);
-  });
+  const messages = chats[name];
+
+  if (messages.length === 0) {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'message them';
+    placeholder.textContent = '🗨️ This is the beginning of your conversation';
+    chatMessages.appendChild(placeholder);
+  } else {
+    messages.forEach((msg) => {
+      const div = document.createElement('div');
+      div.className = `message ${msg.from}`;
+      div.innerHTML = `
+        <div>${msg.text}</div>
+        <div class="timestamp">${msg.time}</div>
+      `;
+      chatMessages.appendChild(div);
+    });
+  }
 
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+// Handle message send
 sendBtn.addEventListener("click", () => {
   const text = messageInput.value.trim();
-  if (text !== "") {
-    chats[currentChat].push({ from: 'you', text });
+  if (text !== "" && currentChat) {
+    const now = new Date();
+    const formattedTime = formatTimestamp(now);
+    chats[currentChat].push({ from: 'you', text, time: formattedTime });
     messageInput.value = "";
     loadChat(currentChat);
   }
@@ -68,5 +93,12 @@ messageInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendBtn.click();
 });
 
+// Initial empty chat placeholder before any selection
+function showInitialPlaceholder() {
+  chatPartnerName.textContent = "Select a chat";
+  chatMessages.innerHTML = '';
+  document.getElementById('initial-placeholder').style.display = 'block';
+}
+
 renderChatList();
-loadChat(currentChat);
+showInitialPlaceholder();

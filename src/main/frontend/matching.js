@@ -130,7 +130,7 @@ likeBtn.addEventListener('click', () => {
 
 dislikeBtn.addEventListener('click', () => {
     console.log("✕ Skipped:", matches[currentIndex]?.name);
-    showFeedbackMessage("AI is improving based on your selection");
+    showFeedbackMessage("AI is improving match making based on your selection");
     goToNext();
 });
 

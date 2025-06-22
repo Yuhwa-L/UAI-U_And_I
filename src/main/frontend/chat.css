@@ -126,3 +126,40 @@ body {
 .chat-input button a:hover {
   color: #e58d85;
 }
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.message.them:only-child {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+
+.initial-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0.5;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.initial-placeholder .icon {
+  font-size: 4rem;
+}
+
+.initial-placeholder .text {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.chat-window {
+  position: relative; /* So absolute placeholder centers properly */
+}
