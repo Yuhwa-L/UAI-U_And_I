@@ -12,11 +12,18 @@ from flask import Flask, request, jsonify
 # ────────────────────────────────────────────────────────────────────
 # 0.  Secrets
 # ────────────────────────────────────────────────────────────────────
-load_dotenv()
-if "OPENAI_API_KEY" not in os.environ:
-    os.environ["OPENAI_API_KEY"] = "OPENAI_API_KEY=[REDACTED]"
+# load_dotenv()
+# if "OPENAI_API_KEY" not in os.environ:
+#     os.environ["OPENAI_API_KEY"] = "key"
+# openai.api_key = os.environ["OPENAI_API_KEY"]
 
-openai.api_key = os.environ["OPENAI_API_KEY"]
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise EnvironmentError("OPENAI_API_KEY not found in environment. Set it in a .env file or shell.")
+
+openai.api_key = api_key
 
 # ────────────────────────────────────────────────────────────────────
 # 1.  Load / persist the questionnaire (same as before)
