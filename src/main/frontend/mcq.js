@@ -165,7 +165,8 @@ const sendToBackend = async () => {
   };
 
   try {
-    const response = await fetch('https://your-backend-url.com/api/submit-quiz', {
+
+    const response = await fetch('http://localhost:8080/api/submit-answers-mcq', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -175,6 +176,7 @@ const sendToBackend = async () => {
 
     if (response.ok) {
       alert('Your answers were submitted!');
+      localStorage.setItem('registeredEmail', email);  // save to localStorage
       window.location.href = 'ai-chat.html';
     } else {
       const msg = document.createElement('div');

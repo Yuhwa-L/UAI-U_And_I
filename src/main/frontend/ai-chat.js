@@ -1,6 +1,8 @@
-const chatMessages = document.getElementById("chat-messages");
-const userInput = document.getElementById("userInput");
-const sendBtn = document.getElementById("sendBtn");
+const chatMessages = document.getElementById('chat-messages');
+const userInput = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+
+const email = localStorage.getItem('registeredEmail');
 
 let conversationFinished = false;
 
@@ -14,9 +16,9 @@ function appendMessage(text, sender) {
 
 async function fetchNextAIQuestion(userResponse = null) {
   try {
-    const response = await fetch("http://your-backend-endpoint/ai-chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('http://your-backend-endpoint/ai-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: userResponse }),
     });
 
@@ -25,7 +27,7 @@ async function fetchNextAIQuestion(userResponse = null) {
     if (result.status === "done") {
       appendMessage("✅ AI preference analysis complete!", "ai");
       setTimeout(() => {
-        window.location.href = "home.html";
+        window.location.href = 'home.html';
       }, 2500);
     } else {
       appendMessage(result.message, "ai");

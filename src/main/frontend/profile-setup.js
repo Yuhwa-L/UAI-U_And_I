@@ -1,7 +1,7 @@
-const photoInput = document.getElementById("photoInput");
-const photoPreview = document.getElementById("photoPreview");
-const bioInput = document.getElementById("bioInput");
-const submitBtn = document.getElementById("submitBtn");
+const photoInput = document.getElementById('photoInput');
+const photoPreview = document.getElementById('photoPreview');
+const bioInput = document.getElementById('bioInput');
+const submitBtn = document.getElementById('submitBtn');
 
 const email = localStorage.getItem('registeredEmail');
 
@@ -13,15 +13,16 @@ function checkValidity() {
 
   if (photoSelected && bioFilled) {
     submitBtn.disabled = false;
-    submitBtn.classList.add("enabled");
+    submitBtn.classList.add('enabled');
+    submitBtn.classList.add('enabled');
   } else {
     submitBtn.disabled = true;
-    submitBtn.classList.remove("enabled");
+    submitBtn.classList.remove('enabled');
   }
 }
 
 // Preview & Convert to base64
-photoInput.addEventListener("change", function () {
+photoInput.addEventListener('change', function () {
   const file = photoInput.files[0];
   if (!file) return;
 
@@ -29,15 +30,15 @@ photoInput.addEventListener("change", function () {
   reader.onload = function (e) {
     base64Photo = e.target.result;
     photoPreview.src = base64Photo;
-    photoPreview.style.display = "block";
+    photoPreview.style.display = 'block';
     checkValidity();
   };
   reader.readAsDataURL(file);
 });
 
-bioInput.addEventListener("input", checkValidity);
+bioInput.addEventListener('input', checkValidity);
 
-submitBtn.addEventListener("click", async () => {
+submitBtn.addEventListener('click', async () => {
   const bio = bioInput.value.trim();
 
   const profileData = {
@@ -47,24 +48,23 @@ submitBtn.addEventListener("click", async () => {
   };
 
   try {
-    const response = await fetch("http://<your-backend-domain>/profile-setup", {
-      method: "POST",
+    const response = await fetch('http://localhost:8080/api/submit-bio', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(profileData)
     });
 
     if (response.ok) {
-      alert("Profile setup completed!");
-      const email = document.getElementById('email').value;
-      localStorage.setItem('registeredEmail', email);  // save to localStorage
-      window.location.href = "mcq-question.html";
+      alert('Profile setup completed!');
+      localStorage.setItem('registeredEmail', email);
+      window.location.href = 'mcq.html';
     } else {
-      alert("Something went wrong. Try again.");
+      alert('Something went wrong. Try again.');
     }
   } catch (err) {
-    console.error("Network error:", err);
-    alert("Failed to connect to server.");
+    console.error('Network error:', err);
+    alert('Failed to connect to server.');
   }
 });
