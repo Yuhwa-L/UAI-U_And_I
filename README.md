@@ -1,6 +1,4 @@
-# UAI-U_And_I
-
-# 💘 AI-Powered Dating App
+ 💘 UAI-U_And_I
 
 ## 🧠 Overview  
 This project is an **AI-driven dating application** that analyzes users’ preferences to provide highly personalized match recommendations.  
